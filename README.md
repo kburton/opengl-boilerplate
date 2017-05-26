@@ -8,27 +8,33 @@ A cross-platform boilerplate project for modern OpenGL, utilising GLFW for conte
 
 ## Build
 
-    mkdir build && cd build
-    cmake ..
-    make
+CMake can generate a vast number of different project supporting a diverse range of IDEs and build utilities: CMake can't build projects on its own.
 
-### Building with XCode
+Depending on your system and set up, the typical generators are:
+* `Unix Makefiles`
 
-    mkdir xcode && cd xcode
-    cmake -G "Xcode" ..
+macOS:
+* `Xcode`
 
-Then open the generated `Project.xcodeproj` project.
+Windows:
+ * `Visual Studio 15 2017`
+ * `Visual Studio 15 2017 Win64`
 
-If you don't have CMake installed on your Mac, the easist way is to install is with [Homebrew](http://brew.sh) using `brew install cmake`
+You can generate each project from the command line by changing directory (`cd`) to the empty `build` directory, and running:
 
-### Building with Visual Studio
+    cmake .. -G '<your generator goes here>'
+    <open the generated project>
 
-CMake comes with a diverse options of [generators](http://www.cmake.org/cmake/help/v2.8.8/cmake.html#section_Generators). Use the CMake GUI on Windows to automatically create a project solution based on this project.
+### Using the `cmake-gui`
 
-Set your source directory to here, and the build directory to build, i.e.:
+Set your source directory to here, and the build directory to `build`, i.e.:
 
-    Path to source directory: C:\some\where\opengl-boilerplate
-    Path to build directory: C:\some\where\opengl-boilerplate\build
+    Path to source directory: /some/where/opengl-boilerplate
+    Path to build directory: /some/where/opengl-boilerplate\build
+
+Then, select 'Configure', picking a supported generator from the pop-up that appears, and finally 'Generate'.
+
+You can now open this generated project with 'Open Project'.
 
 ## Dependencies
 
