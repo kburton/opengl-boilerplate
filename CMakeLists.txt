@@ -4,7 +4,7 @@ set(GLFW_SOURCE_DIR "external/glfw")
 set(GLM_SOURCE_DIR "external/glm")
 set(GLEW_SOURCE_DIR "external/glew")
 
-# Building only the GLFW lib
+# GLFW-specific configuration
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "")
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "")
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "")
@@ -30,7 +30,9 @@ add_definitions(
 )
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/out)
 
+file(GLOB SOURCE_FILES src/**.cpp)
 
 if (APPLE)
     set(APP_NAME "OpenGLBoilerplate")
@@ -41,20 +43,33 @@ if (APPLE)
         set_target_properties(${APP_NAME} PROPERTIES MACOSX_BUNDLE_ICON_FILE ${CMAKE_CURRENT_SOURCE_DIR}/icon.icns)
     else ()
 
-        add_executable(${APP_NAME} MACOSX_BUNDLE main.cpp)
+        add_executable(${APP_NAME} MACOSX_BUNDLE ${SOURCE_FILES})
     endif ()
 
-#    set_target_properties(${APP_NAME} PROPERTIES MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules/app.plist.in)
+#    set_target_properties(${APP_NAME} PROPERTIES MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/app.plist.in)
 
     set_target_properties(${APP_NAME} PROPERTIES MACOSX_BUNDLE_BUNDLE_NAME ${APP_NAME})
     set_target_properties(${APP_NAME} PROPERTIES MACOSX_BUNDLE_SHORT_VERSION_STRING "1.0")
     set_target_properties(${APP_NAME} PROPERTIES MACOSX_BUNDLE_LONG_VERSION_STRING "1.0")
     set_target_properties(${APP_NAME} PROPERTIES MACOSX_BUNDLE_INFO_STRING "OpenGL boilerplate example app")
+
+    set(EXECUTABLE_NAME ${APP_NAME})
 else()
-    set(APP_NAME "opengl-boilerplate")
-    add_executable(${APP_NAME} main.cpp)
+    set(EXECUTABLE_NAME "opengl-boilerplate")
+    add_executable(${EXECUTABLE_NAME} ${SOURCE_FILES})
 endif()
 
-target_link_libraries(${APP_NAME} glfw ${GLFW_LIBRARIES} glew)
+target_link_libraries(${EXECUTABLE_NAME} glfw ${GLFW_LIBRARIES} glew)
 
+set(LICENSES_TXT "${EXECUTABLE_OUTPUT_PATH}/LICENSES.txt")
 
+function(add_license NAME IN_FILE)
+  file(READ ${IN_FILE} CONTENTS)
+  file(APPEND ${LICENSES_TXT} "*****  ${NAME}  *****\n\n${CONTENTS}\n\n")
+endfunction()
+
+file(REMOVE ${LICENSES_TXT})
+
+add_license("GLEW" "external/glew/LICENSE.txt")
+add_license("GLFW" "external/glfw/COPYING.txt")
+add_license("GLM" "external/glm/copying.txt")
