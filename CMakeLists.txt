@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 
+find_package(OpenGL REQUIRED)
+
 set(GLFW_SOURCE_DIR "external/glfw")
 set(GLM_SOURCE_DIR "external/glm")
 set(GLEW_SOURCE_DIR "external/glew")
@@ -59,7 +61,7 @@ else()
     add_executable(${EXECUTABLE_NAME} ${SOURCE_FILES})
 endif()
 
-target_link_libraries(${EXECUTABLE_NAME} glfw ${GLFW_LIBRARIES} glew)
+target_link_libraries(${EXECUTABLE_NAME} glfw ${GLFW_LIBRARIES} glew ${OPENGL_LIBRARIES})
 
 set(LICENSES_TXT "${EXECUTABLE_OUTPUT_PATH}/LICENSES.txt")
 
