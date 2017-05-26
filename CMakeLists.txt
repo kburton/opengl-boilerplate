@@ -63,6 +63,9 @@ endif()
 
 target_link_libraries(${EXECUTABLE_NAME} glfw ${GLFW_LIBRARIES} glew ${OPENGL_LIBRARIES})
 
+# Visual Studio-specific properties
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${EXECUTABLE_NAME})
+
 set(LICENSES_TXT "${EXECUTABLE_OUTPUT_PATH}/LICENSES.txt")
 
 function(add_license NAME IN_FILE)
