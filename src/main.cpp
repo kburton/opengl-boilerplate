@@ -19,8 +19,10 @@ static void key_callback(GLFWwindow *window, int key, int scancode, int action, 
     glfwSetWindowShouldClose(window, GL_TRUE);
 }
 
-static void render(GLFWwindow *window) {
-  glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT|GL_ACCUM_BUFFER_BIT);
+static inline void render(GLFWwindow *window) {
+  // Put your rendering code in here.
+
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_ACCUM_BUFFER_BIT);
 }
 
 int main(void) {
@@ -40,6 +42,7 @@ int main(void) {
   window = glfwCreateWindow(640, 480, "OpenGL Boilerplate", NULL, NULL);
   if (!window) {
     glfwTerminate();
+    fputs("Could not get a new GLFW window.", stderr);
     exit(EXIT_FAILURE);
   }
 
@@ -55,7 +58,6 @@ int main(void) {
 
     glfwSwapBuffers(window);
     glfwPollEvents();
-    //glfwWaitEvents();
   }
 
   glfwDestroyWindow(window);
