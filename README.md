@@ -3,7 +3,7 @@
 A cross-platform boilerplate project for modern OpenGL, utilising GLFW for context management, GLEW for handling OpenGL extensions, and GLM for mathematics.
 
 
-    git clone git@github.com:andersonfreitas/opengl-boilerplate.git --recursive
+    git clone https://github.com/galexite/opengl-boilerplate.git --recursive
 
 
 ## Build
