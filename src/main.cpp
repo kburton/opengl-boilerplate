@@ -30,8 +30,10 @@ int main(void) {
 
   glfwSetErrorCallback(error_callback);
 
-  if (!glfwInit())
-    exit(EXIT_FAILURE);
+  if (!glfwInit()) {
+    fputs("glfwInit() failed: unable to continue.", stderr);
+    return EXIT_FAILURE;
+  }
 
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
