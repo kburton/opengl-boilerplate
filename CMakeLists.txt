@@ -76,5 +76,4 @@ endfunction()
 file(REMOVE ${LICENSES_TXT})
 
 add_license("GLEW" "external/glew/LICENSE.txt")
-add_license("GLFW" "external/glfw/COPYING.txt")
-add_license("GLM" "external/glm/copying.txt")
+add_license("GLFW" "external/glfw/LICENSE.md")
