@@ -54,6 +54,10 @@ int main(void) {
   glfwMakeContextCurrent(window);
 
   glfwSetKeyCallback(window, key_callback);
+ 
+  // Only swap the buffers when a screen update has taken place.
+  // Dramatic reduction in idle CPU usage.
+  glfwSwapInterval(1);
 
   while (!glfwWindowShouldClose(window)) {
     render(window);
