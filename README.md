@@ -44,7 +44,9 @@ You can now open this generated project with 'Open Project'.
 
 ## Dependencies
 
- * [GLFW](https://github.com/glfw/glfw)
- * [GLEW](http://github.com/nigels-com/glew.git)
- * [GLM](https://github.com/g-truc/glm)
- * [CMake](http://www.cmake.org/)
+Some of these dependencies, marked as _included_, are distributed either in source, or as a git submodule. Make sure you've cloned with `--recursive`, or use `git submodule init; git submodule update` to fetch them.
+
+ * [Graphics Library Framework (GLFW)](https://github.com/glfw/glfw): included, handles setting up the GL context
+ * [OpenGL Extension Wrangler (GLEW)](http://github.com/nigels-com/glew.git): included, manages GL extensions
+ * [OpenGL Mathematics (GLM)](https://github.com/g-truc/glm): included only for convenience later on during app development
+ * [CMake](http://www.cmake.org/): **required**, used to generate
