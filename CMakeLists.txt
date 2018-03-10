@@ -4,6 +4,7 @@ find_package(OpenGL REQUIRED)
 
 set(GLFW_SOURCE_DIR "external/glfw")
 set(GLEW_SOURCE_DIR "external/glew")
+set(LINMATH_SOURCE_DIR "external/linmath.h")
 
 # GLFW-specific configuration
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "")
@@ -16,7 +17,8 @@ add_subdirectory(${GLFW_SOURCE_DIR} ${GLEW_SOURCE_DIR})
 
 include_directories(${GLFW_SOURCE_DIR}/include
                     ${GLFW_SOURCE_DIR}/deps
-                    ${GLEW_SOURCE_DIR}/include)
+                    ${GLEW_SOURCE_DIR}/include
+                    ${LINMATH_SOURCE_DIR})
 
 add_library(glew STATIC
   ${GLEW_SOURCE_DIR}/src/glew.c
