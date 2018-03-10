@@ -1,11 +1,11 @@
-# OpenGL C++ Boilerplate
+# OpenGL C Boilerplate
 
 A cross-platform boilerplate project for modern OpenGL, utilising GLFW for
-context management, GLEW for handling OpenGL extensions, and GLM for
-mathematics.
+context management, GLEW for handling OpenGL extensions, and
+[linmath.h](https://github.com/datenwolf/linmath.h) for mathematics.
 
 
-    git clone https://github.com/galexite/opengl-boilerplate.git --recursive
+    git clone https://github.com/kburton/opengl-boilerplate-c.git --recursive
 
 
 ## Build
@@ -34,8 +34,8 @@ to the empty `build` directory, and running:
 
 Set your source directory to here, and the build directory to `build`, i.e.:
 
-    Path to source directory: /some/where/opengl-boilerplate
-    Path to build directory: /some/where/opengl-boilerplate\build
+    Path to source directory: /some/where/opengl-boilerplate-c
+    Path to build directory: /some/where/opengl-boilerplate-c\build
 
 Then, select 'Configure', picking a supported generator from the pop-up that
 appears, and finally 'Generate'.
@@ -44,9 +44,10 @@ You can now open this generated project with 'Open Project'.
 
 ## Dependencies
 
-Some of these dependencies, marked as _included_, are distributed either in source, or as a git submodule. Make sure you've cloned with `--recursive`, or use `git submodule init; git submodule update` to fetch them.
+Some of these dependencies, marked as _included_, are distributed either in source, or as a git submodule.
+Make sure you've cloned with `--recursive`, or use `git submodule init; git submodule update` to fetch them.
 
  * [Graphics Library Framework (GLFW)](https://github.com/glfw/glfw): included, handles setting up the GL context
  * [OpenGL Extension Wrangler (GLEW)](http://github.com/nigels-com/glew.git): included, manages GL extensions
- * [OpenGL Mathematics (GLM)](https://github.com/g-truc/glm): included only for convenience later on during app development
+ * [linmath.h](https://github.com/datenwolf/linmath.h): included only for convenience later on during app development
  * [CMake](http://www.cmake.org/): **required**, used to generate
