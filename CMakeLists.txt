@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 2.8)
 find_package(OpenGL REQUIRED)
 
 set(GLFW_SOURCE_DIR "external/glfw")
-set(GLM_SOURCE_DIR "external/glm")
 set(GLEW_SOURCE_DIR "external/glew")
 
 # GLFW-specific configuration
@@ -17,7 +16,6 @@ add_subdirectory(${GLFW_SOURCE_DIR} ${GLEW_SOURCE_DIR})
 
 include_directories(${GLFW_SOURCE_DIR}/include
                     ${GLFW_SOURCE_DIR}/deps
-                    ${GLM_SOURCE_DIR}
                     ${GLEW_SOURCE_DIR}/include)
 
 add_library(glew STATIC
@@ -34,7 +32,7 @@ add_definitions(
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/out)
 
-file(GLOB SOURCE_FILES src/**.cpp)
+file(GLOB SOURCE_FILES src/**.c)
 
 if (APPLE)
     set(APP_NAME "OpenGLBoilerplate")
